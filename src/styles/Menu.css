@@ -1,0 +1,144 @@
+/* General Styling */
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #FFB800, #A30000); /* Degradê mais suave */
+  box-sizing: border-box;
+  padding-top: 30px;
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Header Styling */
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1100px;
+  padding: 18px 24px;
+  background: #ffffff;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menuHeader:hover {
+  transform: scale(1.01);
+}
+
+/* Logo */
+.logoSmall {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logoSmall:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Status */
+.statusContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.authStatus, .dbStatus {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: #444;
+}
+
+/* Card Styling */
+.menuCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 45px;
+  border-radius: 20px;
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 480px;
+  gap: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menuCard:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+.menuCard h2 {
+  font-size: 28px;
+  color: #222;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Menu List */
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Button Styling */
+.menuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #FF4D4D, #A30000);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 16px;
+  width: 100%;
+  max-width: 350px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.menuButton:hover {
+  background: linear-gradient(135deg, #FF6666, #A30000);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.menuButton:active {
+  background: #A30000;
+  transform: translateY(2px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

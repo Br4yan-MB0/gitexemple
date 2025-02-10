@@ -1,0 +1,105 @@
+/* Container principal dos cards */
+.match-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  /* Card do usuário */
+  .match-card {
+    background: white;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .match-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Imagem de perfil */
+  .profile-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  /* Informações do usuário */
+  .user-info {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .user-info h3 {
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  .user-info p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* Postagens de exemplo */
+  .user-posts {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    justify-content: center;
+  }
+  
+  .user-posts img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Botões de interação */
+  .match-buttons {
+    display: flex;
+    gap: 15px;
+    padding-top: 10px;
+  }
+  
+  .match-buttons button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .reject-button {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .reject-button:hover {
+    background-color: #d43f3f;
+  }
+  
+  .accept-button {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .accept-button:hover {
+    background-color: #3e8e41;
+  }
+  
