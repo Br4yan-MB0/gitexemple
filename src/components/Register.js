@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 //import '../styles/LoginRegister.css'; // Use the same Login.css file
