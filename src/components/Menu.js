@@ -26,8 +26,6 @@ const Menu = () => {
         <ul className="menuList">
           <li><a href="/login" className="menuButton">Login</a></li>
           <li><a href="/register" className="menuButton">Register</a></li>
-          <li><a href="/profile" className="menuButton">View Profile</a></li>
-          <li><a href="/match" className="menuButton">Match Zone</a></li>
         </ul>
       </div>
     </div>
