@@ -28,8 +28,6 @@ const Menu = () => {
           <li><a href="/register" className="menuButton">Register</a></li>
           <li><a href="/profile" className="menuButton">View Profile</a></li>
           <li><a href="/match" className="menuButton">Match Zone</a></li>
-          <li><a href="/settings" className="menuButton">Settings</a></li>
-          <li><button className="menuButton logoutButton">Logout</button></li>
         </ul>
       </div>
     </div>
