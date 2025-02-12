@@ -12,7 +12,7 @@ const pool = mysql.createPool({
   queueLimit: 0,
   connectTimeout: 10000, // 10 segundos de timeout
   ssl: {
-    ca: fs.readFileSync(process.env.DB_SSL_CA),
+    ca: Buffer.from(process.env.DB_SSL_CA_BASE64, 'base64').toString('utf-8'),
   },
 });
 

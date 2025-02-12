@@ -4,10 +4,10 @@ import pool from '../../lib/db';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      const { username, password, email } = req.body;
+      const { username, fullName, email, password, birthDate, bio, preferredLanguage, region, profile_pic } = req.body;
 
       // Validate input fields
-      if (!username || !password || !email) {
+      if (!username || !password || !email || !fullName || !birthDate || !bio || !preferredLanguage || !region || !profile_pic) {
         return res.status(400).json({ message: 'All fields (username, password, email) are required.' });
       }
 

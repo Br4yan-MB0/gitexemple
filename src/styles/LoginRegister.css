@@ -3,9 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #FFB800, #A30000);
   font-family: 'Inter', sans-serif;
+  padding: 20px;
   animation: fadeIn 0.6s ease-in-out;
 }
 
@@ -14,9 +15,9 @@
   background-color: #fff;
   border-radius: 14px;
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
-  padding: 2.5rem;
+  padding: 2rem;
   width: 100%;
-  max-width: 420px;
+  max-width: 500px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
 }
@@ -27,8 +28,8 @@
 
 /* Logo */
 .logo {
-  width: 85px;
-  margin: 0 auto 1.2rem;
+  width: 80px;
+  margin: 0 auto 1rem;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -38,22 +39,22 @@
 
 /* Headings */
 h2 {
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   color: #A30000;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 1.7rem;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
 }
 
 /* Form Styling */
-.form {
+form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 /* Input Styling */
@@ -62,26 +63,51 @@ h2 {
 }
 
 label {
-  display: block;
   font-size: 0.95rem;
   color: #333;
-  margin-bottom: 0.4rem;
   font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
 }
 
-input {
+input,
+select,
+textarea {
   width: 100%;
-  padding: 0.9rem;
+  padding: 0.8rem;
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
   border-color: #A30000;
   box-shadow: 0px 0px 8px rgba(163, 0, 0, 0.3);
   outline: none;
+}
+
+/* Textarea Styling */
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Profile Picture Preview */
+.profile-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 10px auto;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.profile-preview:hover {
+  transform: scale(1.05);
 }
 
 /* Error Message */
@@ -89,7 +115,8 @@ input:focus {
   color: #FF0000;
   font-size: 0.85rem;
   margin-top: -0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
 }
 
 /* Buttons */
@@ -97,7 +124,7 @@ input:focus {
   background: linear-gradient(135deg, #FFD700, #FFB800);
   color: #A30000;
   padding: 0.9rem;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: bold;
   border: none;
   border-radius: 8px;
@@ -109,13 +136,13 @@ input:focus {
 
 .button:hover {
   background: linear-gradient(135deg, #FFC800, #FF9900);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .button:active {
   background: #FF9900;
-  transform: translateY(2px);
+  transform: translateY(1px);
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -123,31 +150,26 @@ input:focus {
   margin-bottom: 1rem;
 }
 
-/* Register Link */
-.register-link {
-  font-size: 0.95rem;
-  color: #555;
+/* Return Button */
+.mt-20 {
+  margin-top: 1.5rem;
+  background: #A30000;
+  color: #fff;
 }
 
-.link {
+.mt-20:hover {
+  background: #FFB800;
   color: #A30000;
-  cursor: pointer;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.link:hover {
-  color: #FFB800;
 }
 
 /* Animations */
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(-10px);
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
