@@ -3,16 +3,18 @@ import { useRouter } from 'next/router';
 
 const Register = () => {
   const [username, setUsername] = useState('');
-  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [birthDate, setBirthDate] = useState('');
   const [bio, setBio] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
-  const [preview, setPreview] = useState(''); // Pré-visualização da imagem
-  const [preferredLanguage, setPreferredLanguage] = useState('English');
+  const [fullName, setFullName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [language, setLanguage] = useState('Portuguese');
   const [region, setRegion] = useState('');
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [preview, setPreview] = useState('');
+
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
@@ -40,21 +42,12 @@ const Register = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('fullName', fullName);
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('birthDate', birthDate);
-    formData.append('bio', bio);
-    formData.append('profilePicture', profilePicture); // Adiciona a imagem de perfil
-    formData.append('preferredLanguage', preferredLanguage);
-    formData.append('region', region);
-
     try {
       const response = await fetch('/api/register-user-db', {
         method: 'POST',
         body: formData, // Envio como FormData para suportar a imagem
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password, bio, fullName, birthDate, region, profilePicture,preview}),
       });
 
       const data = await response.json();
@@ -83,6 +76,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-container">
             <label htmlFor="username">Username</label>
             <input
@@ -123,6 +117,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-container">
             <label htmlFor="birthDate">Birth Date</label>
             <input
@@ -133,6 +128,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-container">
             <label htmlFor="bio">Bio</label>
             <textarea
@@ -143,17 +139,17 @@ const Register = () => {
               rows="3"
             />
           </div>
-          <div className="input-container">
+          {/*<div className="input-container">
             <label htmlFor="profilePicture">Profile Picture</label>
             <input type="file" id="profilePicture" onChange={handleFileChange} accept="image/*" />
             {preview && <img src={preview} alt="Profile Preview" className="profile-preview" />}
-          </div>
+  </div>*/}
           <div className="input-container">
             <label htmlFor="preferredLanguage">Preferred Language</label>
             <select
               id="preferredLanguage"
-              value={preferredLanguage}
-              onChange={(e) => setPreferredLanguage(e.target.value)}
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
             >
               <option value="English">English</option>
               <option value="Spanish">Spanish</option>
@@ -170,11 +166,14 @@ const Register = () => {
               onChange={(e) => setRegion(e.target.value)}
               placeholder="Enter your city or region"
             />
-          </div>
+        </div>
+
           {errorMessage && <p className="error-message">{errorMessage}</p>}
+          
           <button type="submit" className="button primary-button">
             Register
           </button>
+
         </form>
         <button onClick={() => router.push('/')} className="button mt-20">
           Return to Main Menu

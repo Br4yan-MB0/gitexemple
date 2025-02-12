@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       //const { username, fullName, email, password, birthDate, bio, preferredLanguage, region, profile_pic } = req.body;
-      const { username, email, password} = req.body;
+      const { username, email, password, birthDate} = req.body;
 
       // Debugging: Verifique se os dados estão chegando corretamente
       console.log(req.body);
@@ -38,9 +38,9 @@ export default async function handler(req, res) {
       // Insert the new user into the database
       const [result] = await pool.query(
         //'INSERT INTO users (username, fullName, email, password, birthDate, bio, preferredLanguage, region, profile_pic) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        'INSERT INTO users (username, password, email) VALUES (?, ?, ?)',
+        'INSERT INTO users (username, password, email, birthDate) VALUES (?, ?, ?, ?)',
         //[username, fullName, email, encryptedPassword, birthDate, bio, preferredLanguage, region, profile_pic]
-        [username, encryptedPassword, email]
+        [username, encryptedPassword, email, birthDate]
       );
 
       if (result.affectedRows > 0) {
