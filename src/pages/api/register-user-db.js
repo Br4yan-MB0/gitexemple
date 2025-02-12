@@ -4,12 +4,17 @@ import pool from '../../lib/db';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      const { username, fullName, email, password, birthDate, bio, preferredLanguage, region, profile_pic } = req.body;
+      //const { username, fullName, email, password, birthDate, bio, preferredLanguage, region, profile_pic } = req.body;
+      const { username, email, password} = req.body;
+
+      // Debugging: Verifique se os dados estão chegando corretamente
+      console.log(req.body);
 
       // Validate input fields
-      if (!username || !password || !email || !fullName || !birthDate || !bio || !preferredLanguage || !region || !profile_pic) {
-        return res.status(400).json({ message: 'All fields (username, password, email) are required.' });
-      }
+      //if (!username || !password || !email || !fullName || !birthDate || !bio || !preferredLanguage || !region || !profile_pic) {
+      //  if (!username || !password ) {
+      //  return res.status(400).json({ message: 'All fields are required.' });
+      //}
 
       const privateKey = process.env.PRIVATE_KEY;
       if (!privateKey) {
@@ -32,7 +37,9 @@ export default async function handler(req, res) {
 
       // Insert the new user into the database
       const [result] = await pool.query(
+        //'INSERT INTO users (username, fullName, email, password, birthDate, bio, preferredLanguage, region, profile_pic) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
         'INSERT INTO users (username, password, email) VALUES (?, ?, ?)',
+        //[username, fullName, email, encryptedPassword, birthDate, bio, preferredLanguage, region, profile_pic]
         [username, encryptedPassword, email]
       );
 
