@@ -1,6 +1,7 @@
 /* General Styling */
 .menuContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -12,6 +13,39 @@
   box-sizing: border-box;
 }
 
+/* Header Styling */
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.logoSmall {
+  height: 50px;
+}
+
+.statusContainer {
+  text-align: right;
+  font-size: 14px;
+  color: white;
+}
+
+.authStatus.online {
+  color: #00FF00;
+}
+
+.authStatus.offline {
+  color: #FF3333;
+}
+
 /* Card Styling */
 .menuCard {
   display: flex;
@@ -19,27 +53,25 @@
   align-items: center;
   justify-content: center;
   background: white;
-  padding: 60px;
+  padding: 50px;
   border-radius: 20px;
-  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 600px;
-  gap: 30px;
+  max-width: 500px;
+  gap: 25px;
   text-align: center;
   transition: all 0.3s ease-in-out;
 }
 
 .menuCard:hover {
-  transform: scale(1.02);
-  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-/* Heading */
 .menuCard h2 {
-  font-size: 32px;
-  color: #222;
+  font-size: 30px;
+  color: #333;
   font-weight: bold;
-  margin-bottom: 20px;
 }
 
 /* Menu List */
@@ -49,7 +81,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   width: 100%;
 }
 
@@ -60,28 +92,28 @@
   color: white;
   text-decoration: none;
   border: none;
-  border-radius: 12px;
-  font-size: 20px;
+  border-radius: 10px;
+  font-size: 18px;
   font-weight: bold;
-  padding: 18px;
+  padding: 15px;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .menuButton:hover {
   background: linear-gradient(135deg, #FF6666, #A30000);
-  transform: translateY(-4px);
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .menuButton:active {
   background: #A30000;
   transform: translateY(2px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Keyframe animations */
