@@ -1,12 +1,16 @@
-/* Container principal dos cards */
-.match-container {
+/* General Styling */
+.menuContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #FFB800, #A30000);
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Header Styling */
@@ -42,93 +46,84 @@
   color: #FF3333;
 }
 
-/* Card do usuário */
-.match-card {
-  background: white;
-  width: 350px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+/* Card Styling */
+.menuCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: white;
-  padding: 60px;
+  padding: 50px;
   border-radius: 20px;
-  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 600px;
-  gap: 30px;
+  max-width: 500px;
+  gap: 25px;
   text-align: center;
-  padding: 10px 0;
-}
-
-.user-info h3 {
-  margin: 5px 0;
-  color: #333;
-}
-
-.user-info p {
-  color: #666;
-  font-size: 14px;
+  transition: all 0.3s ease-in-out;
 }
 
 .menuCard:hover {
-  transform: scale(1.02);
-  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-/* Heading */
 .menuCard h2 {
-  font-size: 32px;
-  color: #222;
+  font-size: 30px;
+  color: #333;
   font-weight: bold;
-  margin-bottom: 20px;
 }
 
-/* Botões de interação */
-.match-buttons {
+/* Menu List */
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   width: 100%;
 }
 
-.match-buttons button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+/* Button Styling */
+.menuButton {
+  display: block;
+  background: linear-gradient(135deg, #FF4D4D, #A30000);
+  color: white;
+  text-decoration: none;
   border: none;
-  border-radius: 12px;
-  font-size: 20px;
+  border-radius: 10px;
+  font-size: 18px;
   font-weight: bold;
-  padding: 18px;
+  padding: 15px;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .menuButton:hover {
   background: linear-gradient(135deg, #FF6666, #A30000);
-  transform: translateY(-4px);
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .menuButton:active {
   background: #A30000;
   transform: translateY(2px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.accept-button {
-  background-color: #4caf50;
-  color: white;
-}
-
-.accept-button:hover {
-  background-color: #3e8e41;
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
