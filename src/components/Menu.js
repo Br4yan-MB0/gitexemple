@@ -22,7 +22,6 @@ const Menu = () => {
       
       {/* Cartão de Menu */}
       <div className="menuCard">
-        <h2>TrocaDex Dashboard</h2>
         <ul className="menuList">
           <li><a href="/login" className="menuButton">Login</a></li>
           <li><a href="/register" className="menuButton">Register</a></li>

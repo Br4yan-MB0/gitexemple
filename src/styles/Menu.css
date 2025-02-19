@@ -1,16 +1,45 @@
 /* General Styling */
 .menuContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: center; /* Mudei de flex-start para center para centralizar o conteúdo */
+  height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #FFB800, #A30000);
-  font-family: 'Inter', sans-serif;
-  animation: fadeIn 0.5s ease-in-out;
-  padding: 20px;
+  background: linear-gradient(135deg, #FFD700, #8B0000); /* New gradient background */
   box-sizing: border-box;
-  text-align: center;
+  padding-top: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header Styling */
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1100px;
+  padding: 15px 20px;
+  background-color: transparent;
+  border-radius: 12px;
+}
+
+.logoSmall {
+  height: 45px;
+  width: auto;
+}
+
+.statusContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.authStatus, .dbStatus {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
 }
 
 /* Card Styling */
@@ -18,29 +47,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background: white;
-  padding: 60px;
-  border-radius: 20px;
-  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  max-width: 600px;
-  gap: 30px;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.12);
+  width: 90%;
+  max-width: 520px; /* Aumentei o tamanho máximo do card */
+  gap: 20px;
+  transition: all 0.3s ease;
 }
 
 .menuCard:hover {
   transform: scale(1.02);
-  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Heading */
 .menuCard h2 {
-  font-size: 32px;
+  font-size: 26px;
   color: #222;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Menu List */
@@ -50,7 +76,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   width: 100%;
   align-items: center;
 }
@@ -60,42 +86,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #FF4D4D, #A30000);
+  background: linear-gradient(135deg, #eb0909, #8B0000);
   color: white;
   text-decoration: none;
   border: none;
-  border-radius: 12px;
-  font-size: 20px;
+  border-radius: 10px;
+  font-size: 18px;
   font-weight: bold;
-  padding: 18px;
-  width: 100%;
-  max-width: 500px;
+  padding: 15px;
+  width: 100%; /* A largura do botão será 100% dentro do seu contêiner */
+  max-width: 350px; /* O tamanho máximo será 350px */
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .menuButton:hover {
-  background: linear-gradient(135deg, #FF6666, #A30000);
-  transform: translateY(-4px);
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #eb0909, #8B0000);
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .menuButton:active {
-  background: #A30000;
-  transform: translateY(2px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Keyframe animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background: #8B0000;
+  transform: translateY(1px);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }

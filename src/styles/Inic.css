@@ -1,0 +1,77 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+  
+  .userList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .userCard {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profileImage {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    height: 200px;
+  }
+  
+  .userInfo {
+    margin-top: 15px;
+    text-align: left;
+  }
+  
+  .actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .matchButton,
+  .viewProfileButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .matchButton {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .viewProfileButton {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .matchButton:hover {
+    background-color: #218838;
+  }
+  
+  .viewProfileButton:hover {
+    background-color: #0056b3;
+  }
+  
