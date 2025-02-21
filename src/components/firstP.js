@@ -18,7 +18,7 @@ function Home() {
         <p className={styles.subtitle}>
           A plataforma para você compartilhar e trocar habilidades com pessoas ao redor do mundo.
         </p>
-        <Link href="/inic" className={styles.button}>Descubra Mais</Link>
+        <Link href="/" className={styles.button}>Descubra Mais</Link>
       </header>
 
       <section className={styles.features}>

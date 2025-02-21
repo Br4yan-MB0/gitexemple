@@ -1,5 +1,5 @@
-import Index from '../components/Inic';
+import firstP from '../components/firstP';
 
-export default function inicPage() {
-  return <inicPage />;
+export default function firstP() {
+  return <firstP />;
 }

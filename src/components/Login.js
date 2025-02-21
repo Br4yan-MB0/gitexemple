@@ -21,7 +21,7 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem('token', data.token); // Save token securely
-        router.push('../components/index.js'); // Redirect to index page
+        router.push('../components/firstP.js'); // Redirect to index page
       } else {
         setErrorMessage(data.message || 'Login failed. Please try again.');
       }
