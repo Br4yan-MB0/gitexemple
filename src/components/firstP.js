@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import firstP from '@/pages/firstP';
 //import styles from '../styles/inic.module.css'; // Certifique-se de ter este arquivo CSS
 
-function Home() {
+function firstP() {
   const [recommendedUsers, setRecommendedUsers] = useState([
     { name: 'João', skills: 'Database, Binary' },
     { name: 'Maria', skills: 'Python, Machine Learning' },
@@ -56,4 +57,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default firstP;
