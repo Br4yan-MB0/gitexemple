@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/inic.module.css'; // Certifique-se de ter este arquivo CSS
 
-export default function Home() {
+function Home() {
   const [recommendedUsers, setRecommendedUsers] = useState([
     { name: 'João', skills: 'Database, Binary' },
     { name: 'Maria', skills: 'Python, Machine Learning' },
@@ -55,3 +55,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
