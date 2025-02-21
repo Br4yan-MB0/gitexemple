@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import styles from '../styles/inic.module.css'; // Certifique-se de ter este arquivo CSS
+//import styles from '../styles/inic.module.css'; // Certifique-se de ter este arquivo CSS
 
 function Home() {
   const [recommendedUsers, setRecommendedUsers] = useState([

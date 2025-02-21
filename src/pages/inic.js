@@ -1,5 +1,5 @@
-import Index from '../components/index';
+import Index from '../components/Inic';
 
 export default function inicPage() {
-  return <Index />;
+  return <inicPage />;
 }
