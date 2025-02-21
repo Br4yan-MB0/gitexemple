@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import firstP from '@/pages/firstP';
 //import styles from '../styles/inic.module.css'; // Certifique-se de ter este arquivo CSS
 
 function firstP() {

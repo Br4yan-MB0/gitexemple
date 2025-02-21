@@ -1,5 +1,5 @@
-import firstP from '../components/firstP';
+import firstp from '../components/firstP';
 
 export default function firstP() {
-  return <firstP />;
+  return <firstp />;
 }
