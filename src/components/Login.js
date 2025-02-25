@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-
 //import '../styles/LoginRegister.css';
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem('token', data.token); // Save token securely
-        router.push('../components/firstP.js'); // Redirect to index page
+        router.push('/firstP'); // Redirect to index page
       } else {
         setErrorMessage(data.message || 'Login failed. Please try again.');
       }

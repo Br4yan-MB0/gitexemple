@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [bio, setBio] = useState('');
@@ -23,7 +22,7 @@ const Register = () => {
     if (file) {
       setProfilePicture(file);
       const reader = new FileReader();
-      reader.onloadend = () => setPreview(reader.result); // Criar preview da imagem
+      reader.onloadend = () => setPreview(reader.result);
       reader.readAsDataURL(file);
     }
   };
@@ -45,9 +44,18 @@ const Register = () => {
     try {
       const response = await fetch('/api/register-user-db', {
         method: 'POST',
-        body: formData, // Envio como FormData para suportar a imagem
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password, bio, fullName, birthDate, region, profilePicture,preview}),
+        body: JSON.stringify({ 
+          username, 
+          email, 
+          password, 
+          bio, 
+          fullName, 
+          birthDate, 
+          region, 
+          profilePicture, 
+          preview 
+        }),
       });
 
       const data = await response.json();
@@ -87,6 +95,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-container">
             <label htmlFor="email">Email</label>
             <input
@@ -97,6 +106,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-container">
             <label htmlFor="password">Password</label>
             <input
@@ -107,6 +117,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="input-container">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
@@ -139,11 +150,13 @@ const Register = () => {
               rows="3"
             />
           </div>
-          {/*<div className="input-container">
+
+          {/* <div className="input-container">
             <label htmlFor="profilePicture">Profile Picture</label>
             <input type="file" id="profilePicture" onChange={handleFileChange} accept="image/*" />
             {preview && <img src={preview} alt="Profile Preview" className="profile-preview" />}
-  </div>*/}
+          </div> */}
+
           <div className="input-container">
             <label htmlFor="preferredLanguage">Preferred Language</label>
             <select
@@ -157,6 +170,7 @@ const Register = () => {
               <option value="French">French</option>
             </select>
           </div>
+
           <div className="input-container">
             <label htmlFor="region">Region</label>
             <input
@@ -166,15 +180,15 @@ const Register = () => {
               onChange={(e) => setRegion(e.target.value)}
               placeholder="Enter your city or region"
             />
-        </div>
+          </div>
 
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           
           <button type="submit" className="button primary-button">
             Register
           </button>
-
         </form>
+
         <button onClick={() => router.push('/')} className="button mt-20">
           Return to Main Menu
         </button>
