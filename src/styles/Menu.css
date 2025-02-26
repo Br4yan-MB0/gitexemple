@@ -1,87 +1,77 @@
-/* General Styling */
+/* Estilização Geral */
 .menuContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Mudei de flex-start para center para centralizar o conteúdo */
+  justify-content: center;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #FFD700, #8B0000); /* New gradient background */
+  background: linear-gradient(135deg, #FFD700, #8B0000);
   box-sizing: border-box;
-  padding-top: 20px;
+  padding: 20px;
   font-family: 'Inter', sans-serif;
+  position: relative;
 }
 
-/* Header Styling */
-.menuHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  max-width: 1100px;
-  padding: 15px 20px;
-  background-color: transparent;
-  border-radius: 12px;
-}
-
-.logoSmall {
-  height: 45px;
-  width: auto;
-}
-
+/* Luzes no Canto Superior Direito */
 .statusContainer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+  gap: 10px;
 }
 
-.authStatus, .dbStatus {
-  font-size: 14px;
-  font-weight: 600;
-  margin: 0;
+/* Luzes de Status */
+.statusLight {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
 }
 
-/* Card Styling */
+.statusLight.green {
+  background-color: green;
+}
+
+.statusLight.red {
+  background-color: red;
+}
+
+/* Logo Centralizada e Grande */
+.logoGreat {
+  width: 250px; /* Tamanho grande da logo */
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Cartão de Menu */
 .menuCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: white;
-  padding: 40px;
+  padding: 30px;
   border-radius: 18px;
   box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.12);
   width: 90%;
-  max-width: 520px; /* Aumentei o tamanho máximo do card */
+  max-width: 400px;
   gap: 20px;
   transition: all 0.3s ease;
 }
 
-.menuCard:hover {
-  transform: scale(1.02);
-}
-
-/* Heading */
-.menuCard h2 {
-  font-size: 26px;
-  color: #222;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Menu List */
+/* Lista de Botões */
 .menuList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
   width: 100%;
   align-items: center;
 }
 
-/* Button Styling */
+/* Botões do Menu */
 .menuButton {
   display: flex;
   justify-content: center;
@@ -93,19 +83,19 @@
   border-radius: 10px;
   font-size: 18px;
   font-weight: bold;
-  padding: 15px;
-  width: 100%; /* A largura do botão será 100% dentro do seu contêiner */
-  max-width: 350px; /* O tamanho máximo será 350px */
+  padding: 12px;
+  width: 100%;
+  max-width: 300px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0);
 }
 
 .menuButton:hover {
   background: linear-gradient(135deg, #eb0909, #8B0000);
   transform: translateY(-3px);
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0);
 }
 
 .menuButton:active {

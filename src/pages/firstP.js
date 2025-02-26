@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import jwt from 'jsonwebtoken';
 import Link from 'next/link';
-import '@/styles/inic.module.css'
+import '../styles/inic.module.css'
 
 function FirstP() {
   const [recommendedUsers, setRecommendedUsers] = useState([
@@ -42,6 +42,8 @@ function FirstP() {
         <p>A plataforma para você compartilhar e trocar habilidades.</p>
         <Link href="/">Descubra Mais</Link>
       </header>
+
+      <Link href='/configur'>Configurações</Link>
 
       <section>
         <h2>Usuários Recomendados</h2>

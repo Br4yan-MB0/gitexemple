@@ -1,0 +1,41 @@
+/* styles/configuracoes.module.css */
+
+.container {
+    padding: 20px;
+  }
+  
+  .button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  
+  .darkMode {
+    background-color: #333;
+    color: white;
+  }
+  
+  .confirmation-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .confirmation-dialog button {
+    background-color: red;
+    margin: 10px;
+  }
+  
