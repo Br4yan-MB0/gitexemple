@@ -1,60 +1,41 @@
-import fs from 'fs';
-import path from 'path';
-import jwt from 'jsonwebtoken';
+import pool from '../../lib/db';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === 'DELETE') {
-    const { authorization } = req.headers;
-
-    if (!authorization) {
-      return res.status(400).json({ message: 'Authorization token is required.' });
-    }
-
-    // Extract token from header (Authorization: Bearer token)
-    const token = authorization.split(' ')[1];
-
-    // Secure environment variable usage
-    const jwtSecret = process.env.JWT_SECRET;
-
-    if (!jwtSecret) {
-      console.error('Missing JWT secret.');
-      return res.status(500).json({ message: 'Internal server error.' });
-    }
-
     try {
-      // Verify the token
-      const decoded = jwt.verify(token, jwtSecret);
+      const { username } = req.body;
 
-      // Define file path to find users
-      const filePath = path.join(process.cwd(), 'login.encrypt');
-
-      if (!fs.existsSync(filePath)) {
-        return res.status(404).json({ message: 'No registered users found.' });
+      if (!username) {
+        return res.status(400).json({ message: 'Username is required for deletion.' });
       }
 
-      const fileContent = fs.readFileSync(filePath, 'utf8');
-      const users = JSON.parse(fileContent);
+      // Check if the user exists
+      const [existingUser] = await pool.query(
+        'SELECT * FROM users WHERE username = ?',
+        [username]
+      );
 
-      // Find the user by username
-      const userIndex = users.findIndex((u) => u.username === decoded.username);
-
-      if (userIndex === -1) {
+      if (existingUser.length === 0) {
         return res.status(404).json({ message: 'User not found.' });
       }
 
-      // Remove the user from the array
-      users.splice(userIndex, 1);
+      // Delete the user from the database
+      const [result] = await pool.query(
+        'DELETE FROM users WHERE username = ?',
+        [username]
+      );
 
-      // Save the updated user list back to the file
-      fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-
-      return res.status(200).json({ message: 'Account deleted successfully.' });
+      if (result.affectedRows > 0) {
+        return res.status(200).json({ message: `User '${username}' deleted successfully.` });
+      } else {
+        return res.status(500).json({ message: 'Failed to delete user.' });
+      }
     } catch (error) {
-      console.error('Error processing the request:', error);
+      console.error('Error in delete handler:', error);
       return res.status(500).json({ message: 'Internal server error.' });
     }
   } else {
     res.setHeader('Allow', ['DELETE']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+    return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
