@@ -2,17 +2,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import jwt from 'jsonwebtoken';
 import Link from 'next/link';
-import '../styles/inic.module.css'
+import styles from '../styles/home.module.css';
 
-function FirstP() {
-  const [recommendedUsers, setRecommendedUsers] = useState([
-    { name: 'João', skills: 'Database, Binary' },
-    { name: 'Maria', skills: 'Python, Machine Learning' },
-    { name: 'Carlos', skills: 'Design Gráfico, UX/UI' },
-    { name: 'Ana', skills: 'Marketing Digital, SEO' },
-    { name: 'Luiz', skills: 'DevOps, Kubernetes' },
-  ]);
-  
+export default function FirstP() {
+  const [recommendedUsers, setRecommendedUsers] = useState([]);
   const [username, setUsername] = useState('');
   const router = useRouter();
 
@@ -35,26 +28,41 @@ function FirstP() {
     }
   }, [router]);
 
+  useEffect(() => {
+    async function fetchRecommendedUsers() {
+      try {
+        const response = await fetch('/api/recommendedUsers');
+        const data = await response.json();
+        setRecommendedUsers(data);
+      } catch (error) {
+        console.error('Erro ao buscar usuários recomendados:', error);
+      }
+    }
+    fetchRecommendedUsers();
+  }, []);
+
+  const handleNavigation = (path) => {
+    router.push(path);
+  };
+
   return (
-    <div>
-      <header>
-        <h1>Bem-vindo ao TrocaDex, {username}!</h1>
-        <p>A plataforma para você compartilhar e trocar habilidades.</p>
-        <Link href="/">Descubra Mais</Link>
-      </header>
-
-      <Link href='/configur'>Configurações</Link>
-
+    <div className={styles.container}>
+      <h1>Bem-vindo ao TrocaDex, {username}!</h1>
+      <p>A plataforma para você compartilhar e trocar habilidades.</p>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={() => handleNavigation('/configuracoes')}>Configurações</button>
+        <button className={styles.button} onClick={() => handleNavigation('/chat')}>Chat</button>
+        <button className={styles.button} onClick={() => handleNavigation('/recomendados')}>Recomendados</button>
+      </div>
       <section>
         <h2>Usuários Recomendados</h2>
         {recommendedUsers.map((user, index) => (
-          <div key={index}>
+          <div key={index} className={styles.userCard}>
             <h3>{user.name}</h3>
             <p>{user.skills}</p>
           </div>
         ))}
       </section>
-
       <footer>
         <p>© 2025 TrocaDex - Todos os direitos reservados</p>
       </footer>
