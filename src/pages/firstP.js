@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import Link from 'next/link';
 import styles from '../styles/home.module.css';
 
-export default function FirstP() {
+function FirstP() {
   const [recommendedUsers, setRecommendedUsers] = useState([]);
   const [username, setUsername] = useState('');
   const router = useRouter();
