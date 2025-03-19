@@ -2,7 +2,7 @@ import pool from '../../lib/db';
 
 export default async function handler(req, res) {
     try {
-      const [rows] = await pool.query('SELECT username, skills FROM users ORDER BY RAND() LIMIT 5');
+      const [rows] = await pool.query('SELECT username FROM users ORDER BY RAND() LIMIT 5');
   
       // Garante que a resposta seja um array, mesmo que vazio
       if (!Array.isArray(rows)) {

@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'; 
 import { useRouter } from 'next/router';
 import jwt from 'jsonwebtoken';
-import Link from 'next/link';
 import styles from '../styles/home.module.css';
-import RecommendedUsers from '../components/RecommendedUsers';
 
 function FirstP() {
   const [username, setUsername] = useState('');
@@ -41,7 +39,6 @@ function FirstP() {
         <button className={styles.button} onClick={() => handleNavigation('/chat')}>Chat</button>
         <button className={styles.button} onClick={() => handleNavigation('/recommendedU')}>Recomendados</button>
       </div>
-      <RecommendedUsers />
       <footer>
         <p>© 2025 TrocaDex - Todos os direitos reservados</p>
       </footer>
