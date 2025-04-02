@@ -1,41 +1,47 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { X, Heart } from 'lucide-react';
-//import '../styles/Match.css';
+import { useEffect, useState } from 'react';
 
-const MatchCard = ({ user, onLike, onDislike }) => {
-  if (!user) {
-    return <p>Carregando...</p>; // Adiciona fallback caso user seja undefined
+function Match() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchUsers() {
+      try {
+        const response = await fetch('/api/match-users');
+        const data = await response.json();
+        setUsers(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Erro ao buscar usuários:', error);
+        setLoading(false);
+      }
+    }
+
+    fetchUsers();
+  }, []);
+
+  if (loading) {
+    return <p>Carregando...</p>;
   }
 
   return (
-    <motion.div
-      className="match-card"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <img src={user.profileImage || "/default-image.jpg"} alt="Profile" />
-      <h3 className="user-name">{user.name ? `${user.name}, ${user.age || "Idade não informada"}` : "Nome não disponível"}</h3>
-      <p className="user-location">{user.location || "Localização não disponível"}</p>
-      <div className="post-examples">
-        {Array.isArray(user.posts) && user.posts.length > 0 ? (
-          user.posts.slice(0, 2).map((post, index) => (
-            <div key={index} className="post-preview">{post}</div>
-          ))
-        ) : (
-          <p>Sem posts disponíveis</p>
-        )}
-      </div>
-      <div className="buttons">
-        <button className="dislike" onClick={() => onDislike?.(user.id)}>
-          <X size={24} />
-        </button>
-        <button className="like" onClick={() => onLike?.(user.id)}>
-          <Heart size={24} />
-        </button>
-      </div>
-    </motion.div>
+    <div className="match-container">
+      {users.map(user => (
+        <div key={user.id} className="match-card">
+          <img src={user.profile_picture} alt={user.username} className="profile-picture" />
+          <div className="user-info">
+            <h3>{user.username}</h3>
+            <p>{user.description}</p>
+            <p><strong>Skills:</strong> {user.skills}</p>
+          </div>
+          <div className="actions">
+            <button>Curtir</button>
+            <button>Chamar para Conversar</button>
+          </div>
+        </div>
+      ))}
+    </div>
   );
-};
+}
 
-export default MatchCard;
+export default Match;

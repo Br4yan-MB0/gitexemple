@@ -1,105 +1,175 @@
-/* Container principal dos cards */
-.match-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-    padding: 20px;
+/* General Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FFB800, #A30000);
+  font-family: 'Inter', sans-serif;
+  padding: 20px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Card Layout */
+.card {
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Logo */
+.logo {
+  width: 80px;
+  margin: 0 auto 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Headings */
+h2 {
+  font-size: 1.8rem;
+  color: #A30000;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Input Styling */
+.input-container {
+  text-align: left;
+}
+
+label {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #A30000;
+  box-shadow: 0px 0px 8px rgba(163, 0, 0, 0.3);
+  outline: none;
+}
+
+/* Textarea Styling */
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Profile Picture Preview */
+.profile-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 10px auto;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.profile-preview:hover {
+  transform: scale(1.05);
+}
+
+/* Error Message */
+.error-message {
+  color: #FF0000;
+  font-size: 0.85rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Buttons */
+.button {
+  background: linear-gradient(135deg, #FFD700, #FFB800);
+  color: #A30000;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #FFC800, #FF9900);
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  background: #FF9900;
+  transform: translateY(1px);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button {
+  margin-bottom: 1rem;
+}
+
+/* Return Button */
+.mt-20 {
+  margin-top: 1.5rem;
+  background: #A30000;
+  color: #fff;
+}
+
+.mt-20:hover {
+  background: #FFB800;
+  color: #A30000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  /* Card do usuário */
-  .match-card {
-    background: white;
-    width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    transition: transform 0.3s ease;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .match-card:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Imagem de perfil */
-  .profile-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  
-  /* Informações do usuário */
-  .user-info {
-    text-align: center;
-    padding: 10px 0;
-  }
-  
-  .user-info h3 {
-    margin: 5px 0;
-    color: #333;
-  }
-  
-  .user-info p {
-    color: #666;
-    font-size: 14px;
-  }
-  
-  /* Postagens de exemplo */
-  .user-posts {
-    width: 100%;
-    display: flex;
-    gap: 10px;
-    padding: 10px 0;
-    justify-content: center;
-  }
-  
-  .user-posts img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Botões de interação */
-  .match-buttons {
-    display: flex;
-    gap: 15px;
-    padding-top: 10px;
-  }
-  
-  .match-buttons button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .reject-button {
-    background-color: #ff4d4d;
-    color: white;
-  }
-  
-  .reject-button:hover {
-    background-color: #d43f3f;
-  }
-  
-  .accept-button {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .accept-button:hover {
-    background-color: #3e8e41;
-  }
-  
+}
