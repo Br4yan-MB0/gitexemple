@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-let socket;
+const socket = io({
+  path: "/api/socket",
+});
 
-function Chat() {
+export default function Chat() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    socket = io();
-
-    socket.on("message", (msg) => {
-      setMessages((prev) => [...prev, msg]);
+    socket.on("receiveMessage", (newMessage) => {
+      setMessages((prev) => [...prev, newMessage]);
     });
 
     return () => {
-      socket.disconnect();
+      socket.off("receiveMessage");
     };
   }, []);
 
   const sendMessage = () => {
     if (message.trim()) {
-      socket.emit("message", message);
+      socket.emit("sendMessage", message);
       setMessage("");
     }
   };
@@ -29,15 +29,18 @@ function Chat() {
   return (
     <div>
       <h2>Chat em Tempo Real</h2>
-      <div style={{ height: "200px", overflowY: "scroll", border: "1px solid #ccc", padding: "10px" }}>
-        {messages.map((msg, i) => (
-          <p key={i}>{msg}</p>
+      <div>
+        {messages.map((msg, index) => (
+          <p key={index}>{msg}</p>
         ))}
       </div>
-      <input value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Digite sua mensagem" />
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
       <button onClick={sendMessage}>Enviar</button>
     </div>
   );
 }
 
-export default Chat;

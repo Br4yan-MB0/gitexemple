@@ -2,20 +2,29 @@ import { Server } from "socket.io";
 
 export default function handler(req, res) {
   if (!res.socket.server.io) {
-    const io = new Server(res.socket.server);
-    res.socket.server.io = io;
+    console.log("Criando servidor Socket.IO...");
+    const io = new Server(res.socket.server, {
+      path: "/api/socket",
+      addTrailingSlash: false,
+      cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+      },
+    });
 
     io.on("connection", (socket) => {
       console.log("Usuário conectado:", socket.id);
 
-      socket.on("message", (msg) => {
-        io.emit("message", msg);
+      socket.on("sendMessage", (message) => {
+        io.emit("receiveMessage", message);
       });
 
       socket.on("disconnect", () => {
         console.log("Usuário desconectado:", socket.id);
       });
     });
+
+    res.socket.server.io = io;
   }
 
   res.end();
