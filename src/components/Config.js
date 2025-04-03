@@ -1,117 +1,45 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import ConfirmationDialog from '../components/ConfirmDialog';
 import styles from '../styles/configuracoes.module.css';
 
 export default function Configuracoes() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [confirmationAction, setConfirmationAction] = useState(null);
   const [username, setUsername] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
-    // Recupera o nome de usuário do localStorage ou outro armazenamento
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-  }, []);
-
-  // Alterna o tema (claro/escuro)
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.body.style.backgroundColor = isDarkMode ? 'white' : 'black';
-  };
-
-  // Altera a cor de fundo da página
-  const changeBackground = () => {
-    document.body.style.backgroundColor =
-      document.body.style.backgroundColor === 'lightblue' ? 'lightgreen' : 'lightblue';
-  };
-
-  // Simulação de mudança para conta Premium
-  const changeToPremium = () => {
-    alert('Você agora tem acesso à conta Premium!');
-  };
-
-  // Ação de logout
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username'); // Remove o nome de usuário também
-    alert('Você foi desconectado!');
-    window.location.href = '/login'; // Redireciona para a página de login
-  };
-
-  // Ação de exclusão de conta
-  const handleDeleteAccount = async () => {
-    if (!username) {
-      alert('Nome de usuário não encontrado. Você precisa estar logado.');
+    const storedToken = localStorage.getItem('token');
+    if (!storedToken) {
+      router.push('/login');
       return;
     }
 
     try {
-      const response = await fetch('/api/deleteAccount', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username }), // Envia o nome de usuário para a API
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Erro ao excluir conta');
+      const decoded = JSON.parse(atob(storedToken.split('.')[1]));
+      if (!decoded || !decoded.username) {
+        throw new Error('Token inválido');
       }
-
-      const data = await response.json();
-      alert(data.message);
-      localStorage.removeItem('token');
-      localStorage.removeItem('username');
-      window.location.href = '/login'; // Redireciona para a página de login
-
+      setUsername(decoded.username);
     } catch (error) {
-      alert(`Erro ao excluir conta: ${error.message}`);
+      console.error('Erro ao validar token:', error);
+      router.push('/login');
     }
-  };
-
-  // Lida com a ação de confirmação
-  const handleConfirmAction = (action) => {
-    if (action === 'logout') {
-      handleLogout();
-    } else if (action === 'delete') {
-      handleDeleteAccount();
-    }
-    setConfirmationAction(null);
-  };
-
-  // Cancelar ação de confirmação
-  const handleCancelAction = () => {
-    setConfirmationAction(null);
-  };
-
-  // Abrir o diálogo de confirmação
-  const handleConfirmation = (action) => {
-    setConfirmationAction(action);
-  };
+  }, [router]);
 
   return (
-    <div className={isDarkMode ? styles.darkMode : ''}>
-      <div className={styles.container}>
-        <h1>Configurações</h1>
-
-        <button onClick={toggleTheme}>Alternar Tema</button>
-        <button onClick={changeBackground}>Alterar Plano de Fundo</button>
-        <button onClick={changeToPremium}>Mudar para Premium</button>
-        <button onClick={() => handleConfirmation('logout')}>Sair</button>
-        <button onClick={() => handleConfirmation('delete')}>Excluir Conta</button>
-
-        {confirmationAction && (
-          <ConfirmationDialog
-            action={confirmationAction}
-            onConfirm={handleConfirmAction}
-            onCancel={handleCancelAction}
-          />
-        )}
+    <div className={styles.container}>
+      <h1 className={styles.title}>Configurações</h1>
+      <p className={styles.subtitle}>Bem-vindo, {username}!</p>
+      
+      <div className={styles.settingsContainer}>
+        <button className={styles.button}>Alterar Plano</button>
+        <button className={styles.button}>Mudar Tema</button>
+        <button className={styles.button}>Excluir Conta</button>
+        <button className={styles.logoutButton} onClick={() => {
+          localStorage.removeItem('token');
+          router.push('/login');
+        }}>Sair</button>
       </div>
     </div>
   );
-  
 }
